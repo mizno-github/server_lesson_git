@@ -1,4 +1,5 @@
 # サーバレッスン
+calectl status
 Linuxプラクティス
 -----------------
 ### vagrant系
@@ -15,22 +16,11 @@ Linuxプラクティス
 - status	vagrantの起動状態の確認
 - vagrant plugin install	vagrantにプラグインをインストールする
 - vagrant plugin list	プラグインのリスト
-- 
-- 
-- 
-- 
-- 
-- 
 
 今回利用したコマンド
 - vagrant box add centos/7
 - vagrant plugin install vagrant-vbguest
 	- vagrant-vbguestは初めに追加したBoxの中にインストールされているGuest Additionsというもののバージョンを、VirtualBoxのバージョンに合わせて最新化してくれるプラグインです
-- 
-- 
-- 
-- 
-- 
 ### cent0S/7 で利用したコマンド
 - sudo yum -y install パッケージ名
 - sudo yum -y groupinstall "導入する名称"
@@ -46,10 +36,7 @@ Linuxプラクティス
 - composerのインストール
 	- php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 	- php composer-setup.php
-	- php -r "unlink('composer-setup.php');"
-- 
-- 
-- 
+	- php -r "unlink('composer-setup.php');" 
 
 
 ### ファイル操作
@@ -70,12 +57,18 @@ Linuxプラクティス
 - cp コピー前. php コピー後.php 複製
 	- -r	ディレクトリの複製	
 - mv	ファイル名やディレクトリ名を変更する、またファイルやディレクトリの移動を行う
+	- 移動させるかは指定先に既に存在するか否か操作対象がファイルかディレクトリかによって変わる
+	- mv text.php file1	この場合は移動（拡張子は変えられないため？）
+        - mv file1 file2	この場合は移動も名前変更も可能性あり、見分けかたは右辺のファイル名が存在しているか。（存在していれば移動）
+- rm	ファイルの削除　-r をつければディレクトリも削除できる
+- ワイルドカード(*,?)
+	- *部分一致、文字数は特に関係なし
+        - ?文字数関係あり
+- echo 文字列　>.php　左辺の実行結果出力を右辺で指定したファイルに上書きする
+- echo 文字列　>> 左辺の実行結果出力を右辺で指定したファイルに追加する
+- cat　ファイルの中身を出力する
 - 
-- 
-- 
-- 
-- 
-
+-
 
 ### vi系
 vi ファイル名　起動
