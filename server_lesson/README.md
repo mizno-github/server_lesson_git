@@ -25,22 +25,51 @@ Linuxプラクティス
 今回利用したコマンド
 - vagrant box add centos/7
 - vagrant plugin install vagrant-vbguest
-	vagrant-vbguestは初めに追加したBoxの中にインストールされているGuest Additionsというもののバージョンを、VirtualBoxのバージョンに合わせて最新化してくれるプラグインです
+	- vagrant-vbguestは初めに追加したBoxの中にインストールされているGuest Additionsというもののバージョンを、VirtualBoxのバージョンに合わせて最新化してくれるプラグインです
 - 
 - 
+- 
+- 
+- 
+### cent0S/7 で利用したコマンド
+- sudo yum -y install パッケージ名
+- sudo yum -y groupinstall "導入する名称"
+	- yum パッケージ管理ツール・コマンド  Macの brew 
+	- 例えば、-y オプションを付けずに大量のパッケージをインストールしようとした場合、個々のパッケージのインストールごとに yes/no の入力を求められてスクリプトが停止してしまい面倒であるため、忘れずに付けるようにしましょう。
+- sudo yum -y groupinstall "development tools"
+- phpのインストール
+	- sudo yum -y install epel-release wget
+	- sudo wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+	- sudo rpm -Uvh remi-release-7.rpm
+	- sudo yum -y install --enablerepo=remi-php71 php php-pdo php-mysqlnd php-mbstring php-xml php-fpm php-common php-devel php-mysql unzip
+	- php -v
+- composerのインストール
+	- php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+	- php composer-setup.php
+	- php -r "unlink('composer-setup.php');"
 - 
 - 
 - 
 
 
 ### ファイル操作
-- cd
-- mkdir
-- 
-- 
-- 
-- 
-- 
+ - cd	移動
+	- ~	ホームディレクトリ
+	- /	ルートディレクトリ
+	- -	移動前に位置していたディレクトリ
+	- . 	ワーキングディレクトリ
+	- ..	ワーキングディレクトリの一階層上のディレクトリ
+	- ../../	ワーキングディレクトリの二階層上のディレクトリ
+- mkdir	ディレクトリの作成
+- touch ファイルの作成
+- ls	自分が現在位置しているディレクトリ内に存在するディレクトリやファイルを一覧表示
+	- -a	不可視ファイルも表示
+	- -l	タイプや権限、所有者や所有グループなどの詳細情報を表示
+- pwd	ワーキングディレクトリ がどこであるか出力
+- &&	左辺の実行が成功すれば、右辺を実行する
+- cp コピー前. php コピー後.php 複製
+	- -r	ディレクトリの複製	
+- mv	ファイル名やディレクトリ名を変更する、またファイルやディレクトリの移動を行う
 - 
 - 
 - 
